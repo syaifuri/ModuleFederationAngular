@@ -1,0 +1,43 @@
+<div class="sample-column">
+  <!-- Navigation Bar  -->
+  <igx-navbar title="MicroFE Application 2"> </igx-navbar>
+
+  <!-- contents  -->
+  <div class="sample-column card-wrapper">
+    <igx-card>
+      <igx-card-header>
+        <h3 igxCardHeaderTitle>{{ card.title }}</h3>
+      </igx-card-header>
+
+      <igx-card-content>
+        <p>{{ card.content }}</p>
+      </igx-card-content>
+
+      <igx-card-actions>
+        <button
+          igxButton
+          igxRipple
+          *ngFor="let button of card.buttons"
+          (click)="dialog.open()"
+        >
+          {{ button }}
+        </button>
+        <button igxButton="icon" igxRipple *ngFor="let icon of card.icons">
+          <igx-icon>{{ icon }}</igx-icon>
+        </button>
+      </igx-card-actions>
+    </igx-card>
+  </div>
+
+  <!-- Dialog window -->
+  <igx-dialog
+    #dialog
+    title="Confirmation"
+    leftButtonLabel="Cancel"
+    (leftButtonSelect)="dialog.close()"
+    rightButtonLabel="OK"
+    (rightButtonSelect)="onDialogOKSelected($event)"
+    message="Are you sure you want to delete the Annual_Report_2016.pdf and Annual_Report_2017.pdf files?"
+  >
+  </igx-dialog>
+</div>
